@@ -1,4 +1,5 @@
 ﻿using SchoolManagementApp.Domain.Contracts;
+using SchoolManagementApp.Domain.Enrollments;
 using SchoolManagementApp.Shared.Abstractions;
 using SchoolManagementApp.Shared.Enums;
 using System;
@@ -19,4 +20,5 @@ public class Teacher: IEntity<short>
     public string LastSurname { get; set; }
     public Gender Gender { get; set; }
     public DateTime BirthDate { get; set; }
+    public IEnumerable<Enrollment> Enrollments { get; set; }
 }

@@ -20,4 +20,9 @@ internal class GradeRepository(SchoolDbContext dbContext) : BaseRepository<Grade
     {
         return await GetAll(trackChanges).ToListAsync();
     }
+
+    public async Task<IEnumerable<Grade>> GetOpenGrades()
+    {
+        return await GetByCondition(g => !g.Enrollments.Any(), false).ToListAsync();
+    }
 }

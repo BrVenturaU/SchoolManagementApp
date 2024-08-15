@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolManagementApp.Domain.Contracts;
+using SchoolManagementApp.Domain.Grades;
 using SchoolManagementApp.Domain.Teachers;
 using SchoolManagementApp.Infrastructure.Database;
 
@@ -19,5 +20,10 @@ internal class TeacherRepository(SchoolDbContext dbContext) : BaseRepository<Tea
     public async Task<IEnumerable<Teacher>> GetTeachers(bool trackChanges)
     {
         return await GetAll(trackChanges).ToListAsync();
+    }
+
+    public async Task<IEnumerable<Teacher>> GetOpenGrades()
+    {
+        return await GetByCondition(g => !g.Enrollments.Any(), false).ToListAsync();
     }
 }

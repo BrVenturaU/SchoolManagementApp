@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolManagementApp.Shared.Dtos.Grades;
+using System.Security.Cryptography;
 
 namespace SchoolManagementApp.Application.Teachers;
 
@@ -16,6 +18,14 @@ internal class TeacherService(ITeacherRepository teacherRepository, IUnitOfWork 
 {
     private readonly ITeacherRepository _teacherRepository = teacherRepository;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
+
+    public async Task<Result<IEnumerable<TeacherDto>>> GetOpenTeachers()
+    {
+        var grades = await _teacherRepository.GetOpenGrades();
+
+        return grades.Select(t => new TeacherDto(t.Oid, t.FirstName, t.FirstSurname, t.Gender)).ToList();
+
+    }
 
     public async Task<Result> CreateTeacher(TeacherCreationDto teacherCreationDto)
     {

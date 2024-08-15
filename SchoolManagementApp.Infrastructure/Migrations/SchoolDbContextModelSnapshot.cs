@@ -63,7 +63,7 @@ namespace SchoolManagementApp.Infrastructure.Migrations
                     b.HasIndex("StudentId", "GradeId")
                         .IsUnique();
 
-                    b.ToTable("Enrollments");
+                    b.ToTable("Enrollments", (string)null);
                 });
 
             modelBuilder.Entity("SchoolManagementApp.Domain.Grades.Grade", b =>
@@ -98,7 +98,7 @@ namespace SchoolManagementApp.Infrastructure.Migrations
                     b.HasIndex("Oid")
                         .IsUnique();
 
-                    b.ToTable("Grades");
+                    b.ToTable("Grades", (string)null);
 
                     b.HasData(
                         new
@@ -218,7 +218,7 @@ namespace SchoolManagementApp.Infrastructure.Migrations
                     b.HasIndex("Oid")
                         .IsUnique();
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("SchoolManagementApp.Domain.Teachers.Teacher", b =>
@@ -264,7 +264,7 @@ namespace SchoolManagementApp.Infrastructure.Migrations
                     b.HasIndex("Oid")
                         .IsUnique();
 
-                    b.ToTable("Teachers");
+                    b.ToTable("Teachers", (string)null);
                 });
 
             modelBuilder.Entity("SchoolManagementApp.Domain.Enrollments.Enrollment", b =>

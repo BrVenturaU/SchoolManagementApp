@@ -62,6 +62,14 @@ internal class GradeService(IGradeRepository gradeRepository, IUnitOfWork unitOf
 
     }
 
+    public async Task<Result<IEnumerable<GradeDto>>> GetOpenGrades()
+    {
+        var grades = await _gradeRepository.GetOpenGrades();
+
+        return grades.Select(g => new GradeDto(g.Oid, g.Name, g.Description, g.IsActive)).ToList();
+
+    }
+
     public async Task<Result<GradeToUpdateDto>> GetGradeToUpdate(Guid oid)
     {
         var grade = await _gradeRepository.GetGrade(oid, false);

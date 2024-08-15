@@ -1,4 +1,5 @@
 ﻿using SchoolManagementApp.Domain.Contracts;
+using SchoolManagementApp.Domain.Enrollments;
 using SchoolManagementApp.Shared.Abstractions;
 using System;
 using System.Collections.Generic;
@@ -15,4 +16,5 @@ public class Grade : IEntity<byte>
     public string Name { get; set; }
     public string Description { get; set; }
     public bool IsActive { get; set; }
+    public IEnumerable<Enrollment> Enrollments { get; set; }
 }

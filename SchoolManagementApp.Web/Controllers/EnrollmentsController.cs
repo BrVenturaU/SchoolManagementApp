@@ -33,8 +33,8 @@ namespace SchoolManagementApp.Web.Controllers
             var year = DateTime.Now.Year;
             var yearsRange = 10;
             ViewBag.Students = (await _studentService.GetStudents()).Value;
-            ViewBag.Teachers = (await _teacherService.GetTeachers()).Value;
-            ViewBag.Grades = (await _gradeService.GetGrades()).Value;
+            ViewBag.Teachers = (await _teacherService.GetOpenTeachers()).Value;
+            ViewBag.Grades = (await _gradeService.GetOpenGrades()).Value;
             ViewBag.GradeGroups = Enum.GetNames<GradeGroup>();
             ViewBag.Years = Enumerable.Range(year - yearsRange, (year + yearsRange + 2) - year);
             return View();

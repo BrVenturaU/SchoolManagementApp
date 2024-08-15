@@ -5,6 +5,7 @@ namespace SchoolManagementApp.Application.Teachers;
 
 public interface ITeacherService
 {
+    Task<Result<IEnumerable<TeacherDto>>> GetOpenTeachers();
     Task<Result<IEnumerable<TeacherDto>>> GetTeachers();
     Task<Result<TeacherDto>> GetTeacher(Guid oid);
     Task<Result<TeacherToUpdateDto>> GetTeacherToUpdate(Guid oid);

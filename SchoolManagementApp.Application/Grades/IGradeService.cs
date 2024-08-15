@@ -6,6 +6,7 @@ namespace SchoolManagementApp.Application.Grades;
 public interface IGradeService
 {
     Task<Result<IEnumerable<GradeDto>>> GetGrades();
+    Task<Result<IEnumerable<GradeDto>>> GetOpenGrades();
     Task<Result<GradeDto>> GetGrade(Guid oid);
     Task<Result<GradeToUpdateDto>> GetGradeToUpdate(Guid oid);
     Task<Result> CreateGrade(GradeCreationDto gradeCreationDto);

@@ -32,11 +32,11 @@ namespace SchoolManagementApp.Infrastructure.Database.Configurations
                 .HasForeignKey(e => e.StudentId)
                 .IsRequired();
             builder.HasOne(e => e.Teacher)
-                .WithMany()
+                .WithMany(t => t.Enrollments)
                 .HasForeignKey(e => e.TeacherId)
                 .IsRequired();
             builder.HasOne(e => e.Grade)
-                .WithMany()
+                .WithMany(g => g.Enrollments)
                 .HasForeignKey(e => e.GradeId)
                 .IsRequired();
         }
