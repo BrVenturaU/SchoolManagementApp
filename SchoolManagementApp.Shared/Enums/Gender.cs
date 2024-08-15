@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApp.Shared.Enums;
 
+// Constant name is stored on DB. Maybe is better to store the constant value.
 public enum Gender
 {
-    MUJER,
-    HOMBRE,
-    OTRO
+    FEMENINO,
+    MASCULINO
 }
