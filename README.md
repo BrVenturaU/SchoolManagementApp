@@ -31,3 +31,9 @@ If you are using the Packages Manager Console, you can open the console in Visua
     ```
 
 ***IMPORTANT***: This project is using an SQLEXPRESS Server instance, if you are using LocalDB (or other SQL Server variant) change the connection string located in the `appsettings.json` file to match your SQL Server version. This should be done in order to be able running this project. I did not configure Docker or an in app database like SQLite for this project.
+
+## Docker
+
+To be able to execute SchoolManagementApp as a Docker container, you can create the system image along with its container and an additional container for the SQL Server instance executing the CLI command `docker compose up --build` on the root of the project. Migrations are executed automatically when the system starts, this is not the ideal way to do it, but, it ensures everything is up to test it.
+
+If you want to see additional details related to image creation and container execution, the `Dockerfile` and `docker-compose.yaml` files are provided in the source code.
