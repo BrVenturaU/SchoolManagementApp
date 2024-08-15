@@ -1,0 +1,84 @@
+﻿@using SchoolManagementApp.Shared.Dtos.Enrollments
+
+@{
+    @model ICollection<EnrollmentDto>;
+    ViewData["Title"] = "Inscripciones";
+}
+
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-11"><h2>Inscripciones</h2></div>
+        <div class="col-1">
+            <a class="btn btn-sm btn-primary" asp-action="Create">Inscribir</a>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card shadow-sm rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            @if (Model.Count == 0)
+                            {
+                                <div class="alert alert-info" role="alert">
+                                    <h4 class="alert-heading">¡Crea la primer inscripción!</h4>
+                                    <p>Aun no hay inscripciones de estudiantes registradas, da clic al siguiente enlace para comenzar a inscribir.</p>
+                                    <hr>
+                                    <div class="text-end">
+                                        <a class="btn btn-sm btn-primary" asp-action="Create">Inscribir</a>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="table-responsive">
+                                    <table class="table align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th>Estudiante</th>
+                                                <th>Profesor</th>
+                                                <th>Grado</th>
+                                                <th>Sección</th>
+                                                <th>Año</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var enrollment in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @enrollment.Student.FirstName @enrollment.Student.FirstSurname
+                                                    </td>
+                                                    <td>
+                                                        @enrollment.Teacher.FirstName @enrollment.Teacher.FirstSurname
+                                                    </td>
+                                                    <td>
+                                                        @enrollment.Grade.Name
+                                                    </td>
+                                                    <td>
+                                                        @enrollment.Group
+                                                    </td>
+                                                    <td>
+                                                        @enrollment.Year
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-oid="@enrollment.Oid">Editar</a>
+                                                        <form class="d-inline" asp-action="Delete" asp-route-oid="@enrollment.Oid">
+                                                            <input class="btn btn-danger btn-sm" type="submit" value="Eliminar" />
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
