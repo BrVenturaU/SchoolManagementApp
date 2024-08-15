@@ -33,11 +33,10 @@
                             else
                             {
                             <div class="table-responsive">
-                                <table class="table align-middle">
+                                <table id="data-table" class="table align-middle">
                                     <thead>
                                         <tr>
-                                            <th>Nombre</th>
-                                            <th>Apellido</th>
+                                            <th>Nombre Completo</th>
                                             <th>Genero</th>
                                             <th>Acciones</th>
                                         </tr>
@@ -47,17 +46,14 @@
                                         {
                                             <tr>
                                                 <td>
-                                                    @student.FirstName
-                                                </td>
-                                                <td>
-                                                    @student.FirstSurname
+                                                    @student.FullName
                                                 </td>
                                                 <td>
                                                     @student.Gender
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-oid="@student.Oid">Editar</a>
-                                                    <form class="d-inline" asp-action="Delete" asp-route-oid="@student.Oid">
+                                                        <form class="delete d-inline" asp-action="Delete" asp-route-oid="@student.Oid">
                                                         <input class="btn btn-danger btn-sm" type="submit" value="Eliminar" />
                                                     </form>
                                                 </td>
