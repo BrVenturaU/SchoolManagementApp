@@ -26,7 +26,7 @@
                                     <div class="col-12 col-md">
                                         <label asp-for="FirstName" class="col-12 control-label">Primer Nombre:</label>
                                         <div>
-                                            <input asp-for="FirstName" class="form-control" />
+                                            <input asp-for="FirstName" class="form-control"  />
                                             <span asp-validation-for="FirstName" class="d-block text-danger mt-2"></span>
                                         </div>
                                     </div>
@@ -58,15 +58,7 @@
                                     <div class="col-12 col-md">
                                         <label asp-for="Gender" class="col-12 control-label">Genero: </label>
                                         <div>
-                                            @foreach (var gender in genders)
-                                            {
-                                                <div class="form-check form-check-inline">
-                                                    <input asp-for="Gender" class="form-check-input" id="@gender" type="radio" value="@gender" checked="@gender.Equals("MUJER")">
-                                                    <label class="form-check-label" for="@gender">
-                                                        @gender
-                                                    </label>
-                                                </div>
-                                            }
+                                            <select class="form-control" asp-for="Gender" asp-items="new SelectList(genders)"></select>
                                             <span asp-validation-for="Gender" class="d-block text-danger mt-2"></span>
                                         </div>
                                     </div>
@@ -96,4 +88,5 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script src="~/js/./no-digit-text-validator.js" type="text/javascript"></script>
 }
